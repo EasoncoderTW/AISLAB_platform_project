@@ -1,0 +1,12 @@
+# virt cpu (AIS LAB version)
+
+AISLAB-platform/qemu/hw/riscv/virt_ais.c
+AISLAB-platform/qemu/include/hw/riscv/virt_ais.h
+AISLAB-platform/qemu/hw/riscv/Kconfig
+AISLAB-platform/qemu/hw/riscv/meson.build
+
+
+# device
+AISLAB-platform/qemu/hw/ais_hw/*.c
+AISLAB-platform/qemu/hw/Kconfig
+AISLAB-platform/qemu/hw/meson.build
