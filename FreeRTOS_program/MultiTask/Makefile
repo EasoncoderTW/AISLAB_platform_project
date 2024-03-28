@@ -201,7 +201,7 @@ debug:
 #######################################
 run:
 	qemu-system-riscv64 \
-	-machine virt_ais \
+	-machine virt \
 	-bios none \
 	-kernel ./build/$(TARGET).elf \
 	-nographic  \
