@@ -197,11 +197,14 @@ debug:
 	$(GDB) -x $(BUILD_DIR)/../gdb.sh
 
 #######################################
-# run qemu
+# run qemuS
 #######################################
-run:
+run: virt_ais
+run-virt: virt
+
+%:
 	qemu-system-riscv64 \
-	-machine virt_ais \
+	-machine $@ \
 	-bios none \
 	-kernel ./build/$(TARGET).elf \
 	-nographic  \

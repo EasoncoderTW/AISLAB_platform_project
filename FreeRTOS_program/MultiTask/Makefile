@@ -113,7 +113,7 @@ CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) \
 		-ffunction-sections \
 		-fno-builtin-printf \
 		-fdata-sections \
-		
+		-O0 # no optimization
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2
@@ -197,11 +197,12 @@ debug:
 	$(GDB) -x $(BUILD_DIR)/../gdb.sh
 
 #######################################
-# run qemu
+# run qemuS
 #######################################
-run:
+
+virt:
 	qemu-system-riscv64 \
-	-machine virt_ais \
+	-machine $@ \
 	-bios none \
 	-kernel ./build/$(TARGET).elf \
 	-nographic  \
