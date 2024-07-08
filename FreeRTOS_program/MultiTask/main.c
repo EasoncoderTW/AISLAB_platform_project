@@ -28,8 +28,33 @@ static void Task2(void *p_arg)
     vTaskDelete(NULL);
 }
 
+void int_to_string(int n, char *s)
+{
+	int i = n;
+	int str_len = 0;
+	while(i>0)
+	{
+		i = i/10;
+		str_len++;
+	}
+	if(str_len == 0) str_len = 1; // '0'
+	i = n;
+	for(int x = str_len-1;x>=0;x--)
+	{
+		s[x] = (i%10)+'0';
+		i = i/10;
+	}
+	s[str_len] = '\0';
+}
+
 int main(void)
 {
+	//float f = 1.234;
+    int i = 1234;
+    char c[10];
+    int_to_string(i,c);
+    uart_puts(c);
+
 	uart_puts("FreeRTOS! Start\n");
     
     xTaskCreate(Task1,"Task1",256,(void*)1,1,NULL);

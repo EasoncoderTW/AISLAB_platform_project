@@ -1,5 +1,6 @@
 // function declaration for the UART print function in boot.s
 #include <stdint.h>
+
 int puts(const char *msg);
 
 
@@ -47,7 +48,27 @@ void get_time()
     puts(s);
 }
 
+void int_to_string(int n, char *s)
+{
+	int i = n;
+	int str_len = 0;
+	while(i>0)
+	{
+		i = i/10;
+		str_len++;
+	}
+	if(str_len == 0) str_len = 1; // '0'
+	i = n;
+	for(int x = str_len-1;x>=0;x--)
+	{
+		s[x] = (i%10)+'0';
+		i = i/10;
+	}
+	s[str_len] = '\0';
+}
+
 int main() {
+    
    int x;
    uint32_t mstatus;
    uint32_t mip;
