@@ -1,5 +1,5 @@
 mkdir -p ./shared
-qemu-system-riscv64 -M virt -m 256M -nographic \
+qemu-system-riscv64 -M aislab -m 256M -nographic \
     -bios /workspace/opensbi/build/platform/generic/firmware/fw_jump.bin \
     -kernel /workspace/linux/arch/riscv/boot/Image \
     -drive file=/workspace/busybox/root.ext2,format=raw,id=hd0 \
